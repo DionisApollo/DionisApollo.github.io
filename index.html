@@ -606,6 +606,20 @@ html[data-theme="light"] .portrait-slot.portrait-hover .portrait-photo{
  font:14px/1.7 var(--sans);text-align:right;
 }
 #essayEditor .essay-actions{justify-content:flex-end}
+
+/* Research project action + browser-local project editor. Existing card geometry stays unchanged. */
+#projectEditor #projectTitle,#projectEditor #projectCategory,#projectEditor #projectSummary,
+#projectEditor #projectUrl,#projectEditor #projectTitle::placeholder,#projectEditor #projectCategory::placeholder,
+#projectEditor #projectSummary::placeholder,#projectEditor #projectUrl::placeholder{
+  text-align:left!important;font-size:14px!important;
+}
+#projectEditor #projectSummary{min-height:128px}
+.project-local{cursor:pointer}
+.project-reader-summary{white-space:pre-wrap;overflow-wrap:anywhere;font:15px/2 var(--serif);color:var(--text);padding:18px 0}
+.project-reader-meta{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font:12px/1.7 var(--sans);padding-bottom:8px}
+.project-reader-meta strong{color:var(--gold);font-weight:500}
+.project-link{display:inline-flex;align-items:center;text-decoration:none;padding:10px 17px;border-radius:4px;border:1px solid var(--gold);font-size:13px}
+.project-link[hidden]{display:none!important}
 #essayEditor .essay-primary{font:14px/1.7 var(--sans);text-align:right}
 
 
@@ -1209,8 +1223,8 @@ html[data-theme="light"] .portrait-slot[data-ink-physics="webgl"] .portrait-flui
 
 
   <section id="projects" class="section reveal">
-   <div class="section-head"><div><span class="kicker">PROJECTS</span><h2>研究<span class="accent">项目</span></h2></div></div>
-    <div class="cards" aria-label="研究项目列表"></div>
+   <div class="section-head essay-section-head"><div><span class="kicker">PROJECTS</span><h2>研究<span class="accent">项目</span></h2></div><button class="essay-add" type="button" id="addProjectBtn" aria-haspopup="dialog"><span aria-hidden="true">＋</span> 新增项目</button></div>
+    <div class="cards" id="projectList" aria-label="研究项目列表"></div>
    </section>
 
 
@@ -1333,6 +1347,29 @@ html[data-theme="light"] .portrait-slot[data-ink-physics="webgl"] .portrait-flui
  </div>
  <div class="search-info"><span id="searchCount" aria-live="polite">全部内容</span></div>
  <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果"></div>
+</div>
+
+<div class="essay-overlay" id="projectEditor" role="dialog" aria-modal="true" aria-labelledby="projectEditorTitle" hidden>
+  <div class="essay-panel">
+    <div class="essay-panel-head"><div><span class="kicker">PROJECTS / NEW</span><h3 id="projectEditorTitle">新增项目</h3></div><button class="essay-x" type="button" id="projectEditorClose" aria-label="关闭新增项目">×</button></div>
+    <p class="essay-hint">保存后会显示在原有研究项目方块中，并仅保存在当前浏览器。</p>
+    <form id="projectForm">
+      <label for="projectTitle">项目名称</label><input id="projectTitle" name="title" type="text" maxlength="80" placeholder="输入项目名称" required>
+      <label for="projectCategory">研究方向</label><input id="projectCategory" name="category" type="text" maxlength="40" placeholder="例如：微纳米机器人" required>
+      <label for="projectSummary">项目简介</label><textarea id="projectSummary" name="summary" rows="5" maxlength="600" placeholder="介绍研究目标、方法或进展" required></textarea>
+      <label for="projectStatus">项目状态</label><select id="projectStatus" name="status"><option value="进行中">进行中</option><option value="规划中">规划中</option><option value="已完成">已完成</option></select>
+      <label for="projectUrl">相关链接（可选）</label><input id="projectUrl" name="url" type="url" inputmode="url" maxlength="500" placeholder="https://">
+      <div class="essay-actions"><button type="button" class="essay-secondary" id="projectCancel">取消</button><button type="submit" class="essay-primary">保存</button></div>
+    </form>
+  </div>
+</div>
+<div class="essay-overlay" id="projectReader" role="dialog" aria-modal="true" aria-labelledby="projectReaderTitle" hidden>
+  <div class="essay-panel">
+    <div class="essay-panel-head"><div><span class="kicker" id="projectReaderCategory">PROJECTS</span><h3 id="projectReaderTitle"></h3></div><button class="essay-x" type="button" id="projectReaderClose" aria-label="关闭项目详情">×</button></div>
+    <div class="project-reader-meta"><span>状态：<strong id="projectReaderStatus"></strong></span><span id="projectReaderDateWrap">添加于：<strong id="projectReaderDate"></strong></span></div>
+    <div class="project-reader-summary" id="projectReaderSummary"></div>
+    <div class="essay-actions"><button type="button" class="essay-secondary" id="projectDelete">删除本地项目</button><a class="essay-primary project-link" id="projectReaderLink" target="_blank" rel="noopener noreferrer" hidden>访问项目 ↗</a><button type="button" class="essay-primary" id="projectReaderDone">关闭</button></div>
+  </div>
 </div>
 
 <div class="essay-overlay" id="essayEditor" role="dialog" aria-modal="true" aria-labelledby="essayEditorTitle" hidden>
@@ -1536,7 +1573,71 @@ html[data-theme="light"] .portrait-slot[data-ink-physics="webgl"] .portrait-flui
  });
 
 
- // Browser-local Essay editor; adding an item never silently publishes it to a server.
+  // Browser-local project editor. Existing project cards are never rewritten or removed.
+  (function enableLocalProjects(){
+    const key='zjx-projects-v1',editor=$('#projectEditor'),reader=$('#projectReader'),list=$('#projectList');
+    let items=[],currentId=null;
+    try{
+      const saved=JSON.parse(localStorage.getItem(key)||'[]');
+      items=Array.isArray(saved)?saved.filter(n=>n&&typeof n.title==='string'&&typeof n.category==='string'&&typeof n.summary==='string').slice(0,100):[];
+    }catch(e){items=[]}
+    function persist(){try{localStorage.setItem(key,JSON.stringify(items))}catch(e){console.warn('本地浏览器容量不足：项目未能持久保存',e)}}
+    function showModal(el){el.hidden=false;el.querySelector('input,button,select,textarea')?.focus();body.classList.add('is-locked')}
+    function hideModal(el){el.hidden=true;if(editor.hidden&&reader.hidden)lockState()}
+    function removeFromSearch(){
+      for(let i=indexed.length-1;i>=0;i--){if(String(indexed[i].id).startsWith('project-local-'))indexed.splice(i,1)}
+    }
+    function showReader(n){
+      currentId=n.id;$('#projectReaderTitle').textContent=n.title;$('#projectReaderCategory').textContent='PROJECTS / '+n.category;
+      $('#projectReaderStatus').textContent=n.status||'进行中';$('#projectReaderDate').textContent=n.date||'';
+      $('#projectReaderDateWrap').hidden=!n.date;$('#projectReaderSummary').textContent=n.summary;
+      const link=$('#projectReaderLink');
+      if(n.url){link.href=n.url;link.hidden=false}else{link.hidden=true;link.removeAttribute('href')}
+      showModal(reader);
+    }
+    function makeCard(n,index,offset){
+      const card=document.createElement('article');card.className='card project-local';card.id=n.id;card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','查看项目 '+n.title);
+      const number=document.createElement('div');number.className='card-n';number.textContent='PROJECT / '+String(offset+index+1).padStart(2,'0');
+      const title=document.createElement('h3');title.textContent=n.title;
+      const summary=document.createElement('p');summary.textContent=n.summary;
+      const foot=document.createElement('div');foot.className='card-foot';
+      const category=document.createElement('span');category.textContent=n.category;
+      const more=document.createElement('span');more.textContent=(n.status||'进行中')+' · 查看详情 ↗';
+      foot.append(category,more);card.append(number,title,summary,foot);
+      card.addEventListener('click',()=>showReader(n));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showReader(n)}});
+      list.append(card);
+      indexed.push({id:n.id,type:'PROJECTS',title:n.title,description:n.summary,keywords:n.category+' '+(n.status||''),category:n.category,href:'#'+n.id});
+    }
+    function render(){
+      list.querySelectorAll('.project-local').forEach(el=>el.remove());removeFromSearch();
+      const existing=list.querySelectorAll('.card').length;
+      items.forEach((n,index)=>makeCard(n,index,existing));
+    }
+    const openEditor=()=>{$('#projectForm').reset();$('#projectStatus').value='进行中';showModal(editor);$('#projectTitle').focus()};
+    $('#addProjectBtn').addEventListener('click',openEditor);
+    $('#projectEditorClose').addEventListener('click',()=>hideModal(editor));
+    $('#projectCancel').addEventListener('click',()=>hideModal(editor));
+    $('#projectReaderClose').addEventListener('click',()=>hideModal(reader));
+    $('#projectReaderDone').addEventListener('click',()=>hideModal(reader));
+    [editor,reader].forEach(el=>el.addEventListener('click',e=>{if(e.target===el)hideModal(el)}));
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!editor.hidden)hideModal(editor);if(!reader.hidden)hideModal(reader)}});
+    $('#projectUrl').addEventListener('input',e=>e.currentTarget.setCustomValidity(''));
+    $('#projectForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      const title=$('#projectTitle').value.trim(),category=$('#projectCategory').value.trim(),summary=$('#projectSummary').value.trim(),status=$('#projectStatus').value,url=$('#projectUrl').value.trim();
+      if(!title||!category||!summary)return;
+      if(url&&!/^https?:\/\//i.test(url)){$('#projectUrl').setCustomValidity('请输入以 http:// 或 https:// 开头的链接');$('#projectUrl').reportValidity();return}
+      const n={id:'project-local-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6),title,category,summary,status,url,date:new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit'})};
+      items.unshift(n);persist();render();hideModal(editor);list.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    $('#projectDelete').addEventListener('click',()=>{
+      if(!currentId||!confirm('确定删除这个本地项目吗？'))return;
+      items=items.filter(n=>n.id!==currentId);persist();render();hideModal(reader);currentId=null;
+    });
+    render();
+  })();
+
+  // Browser-local Essay editor; adding an item never silently publishes it to a server.
  (function enableLocalEssays(){
    const key='zjx-essays-v16', editor=$('#essayEditor'),reader=$('#essayReader'), list=$('#articleList');
    let items=[],currentId=null;
