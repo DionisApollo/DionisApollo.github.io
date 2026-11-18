@@ -1094,6 +1094,53 @@ html[data-theme="dark"] .portrait-slot[data-ink-physics="webgl"].portrait-hover 
   animation:flare-twinkle 15s ease-in-out infinite alternate!important;animation-delay:6s!important}
 /* Light and dark share one renderer; theme-specific tone mapping lives in the shader. */
 html[data-theme="light"] .portrait-slot[data-ink-physics="webgl"] .portrait-fluid-gl{display:block!important}
+/* A quiet night sky belongs to the first screen only in dark mode. */
+.hero-sky{
+  position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  opacity:0;transition:opacity .3s ease;
+  background-image:
+    radial-gradient(circle,rgba(225,234,255,.58) .75px,transparent 1.55px),
+    radial-gradient(circle,rgba(203,219,249,.4) .65px,transparent 1.4px),
+    radial-gradient(circle,rgba(237,216,182,.36) .85px,transparent 1.8px);
+  background-size:137px 109px,211px 173px,307px 231px;
+  background-position:14px 27px,84px 94px,37px 15px;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 9%,#000 84%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 9%,#000 84%,transparent);
+}
+html[data-theme="dark"] .hero-sky{opacity:1}
+.hero-sky::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.68) 1px,transparent 2px),
+    radial-gradient(circle,rgba(199,218,255,.55) 1px,transparent 2px);
+  background-size:251px 197px,353px 269px;
+  background-position:65px 48px,175px 131px;
+  animation:hero-stars-twinkle 7s ease-in-out infinite alternate;
+  animation-play-state:paused;
+}
+html[data-theme="dark"] .hero-sky::before{animation-play-state:running}
+@keyframes hero-stars-twinkle{from{opacity:.22}to{opacity:.75}}
+.hero-meteor{
+  position:absolute;top:var(--top);left:var(--left);
+  width:clamp(95px,14vw,180px);height:2px;border-radius:999px;
+  background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(190,214,255,.7) 12%,transparent 100%);
+  box-shadow:-2px 0 8px rgba(205,225,255,.75);
+  opacity:0;transform:translate3d(85px,-65px,0) rotate(-32deg);
+  animation:hero-meteor-fall 12s linear infinite;
+  animation-delay:var(--delay);animation-play-state:paused;
+}
+html[data-theme="dark"] .hero-meteor{animation-play-state:running}
+@keyframes hero-meteor-fall{
+  0%,72%{opacity:0;transform:translate3d(85px,-65px,0) rotate(-32deg)}
+  74%{opacity:0}
+  76%{opacity:.95}
+  84%{opacity:0;transform:translate3d(-340px,205px,0) rotate(-32deg)}
+  100%{opacity:0;transform:translate3d(-340px,205px,0) rotate(-32deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-sky::before,.hero-meteor{animation:none!important}
+  .hero-sky::before{opacity:.45}
+  .hero-meteor{display:none}
+}
 </style>
 </head>
 <body>
@@ -1189,6 +1236,12 @@ html[data-theme="light"] .portrait-slot[data-ink-physics="webgl"] .portrait-flui
 <main id="main">
  <div class="wrap">
   <section class="hero" aria-labelledby="hello">
+   <div class="hero-sky" aria-hidden="true">
+    <span class="hero-meteor" style="--top:13%;--left:83%;--delay:-3s"></span>
+    <span class="hero-meteor" style="--top:30%;--left:66%;--delay:-6s"></span>
+    <span class="hero-meteor" style="--top:8%;--left:54%;--delay:-9s"></span>
+    <span class="hero-meteor" style="--top:43%;--left:93%;--delay:-12s"></span>
+   </div>
    <div class="hero-copy">
     <p class="hero-hello">Hello, I’m <span class="hero-name-accent">ZHONG</span>!</p>
     <h1 id="hello"><span class="hero-line">星星之火，</span><span class="hero-line hero-line-second">可以燎原<span class="hero-dot">。</span></span></h1>
