@@ -1141,26 +1141,8 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
   .hero-sky::before{opacity:.45}
   .hero-meteor{display:none}
 }
-/* Minimal white cover, kept white even when the rest of the site follows dark mode. */
-.entry-cover{
-  min-height:100svh;position:relative;z-index:2;display:flex;flex-direction:column;
-  justify-content:space-between;padding:clamp(25px,3.3vw,48px) clamp(24px,5.5vw,92px);
-  background:#fff!important;color:#0b0c0e;overflow:hidden;
-}
-.entry-cover a{color:inherit}
-.entry-cover__top,.entry-cover__bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;font:600 12px/1.4 var(--sans);letter-spacing:.08em}
-.entry-cover__top a,.entry-cover__bottom a{border-bottom:1px solid #0b0c0e;padding-bottom:5px;transition:color .2s,border-color .2s}
-.entry-cover__top a:hover,.entry-cover__bottom a:hover{color:var(--gold);border-color:var(--gold)}
-.entry-cover__identity{display:flex;align-items:center;gap:12px}
-.entry-cover__square{display:inline-block;width:17px;height:17px;background:var(--gold)}
-.entry-cover__center{width:100%;padding:8vh 0 10vh;text-align:center}
-.entry-cover__eyebrow{font:600 12px/1.5 var(--sans);letter-spacing:.28em;color:#777}
-.entry-cover h1{margin:22px auto 20px;font:700 clamp(48px,8.6vw,136px)/1.08 var(--sans);letter-spacing:-.075em;white-space:nowrap}
-.entry-cover h1 span{color:var(--gold)}
-.entry-cover__center p{margin:0;font:500 clamp(13px,1.3vw,18px)/1.6 var(--serif);letter-spacing:.24em;color:#555}
-.entry-cover__bottom a span{display:inline-block;margin-left:9px;font-size:18px;line-height:.8}
 /* Floating editorial cards use existing research themes and campus imagery. */
-#projects.work-section{padding:86px 0 45px;border-top:0;overflow:hidden}
+#work.work-section{padding:86px 0 45px;overflow:hidden}
 .work-layout{display:grid;grid-template-columns:minmax(0,20fr) minmax(0,60fr) minmax(0,20fr);align-items:center;min-height:570px}
 .work-intro,.work-years{position:relative;z-index:2}
 .work-intro .kicker{margin-bottom:15px;font:600 11px/1.4 var(--sans);letter-spacing:.13em}
@@ -1185,30 +1167,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
 .work-tile--cqu>span,.work-tile--zju>span{margin-top:auto;padding:12px 14px;width:100%;background:linear-gradient(transparent,rgba(0,0,0,.8));color:#fff}
 .work-foot{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding:19px 0 0;font:600 11px/1.5 var(--sans);letter-spacing:.11em;color:var(--muted)}
 .work-foot a{color:var(--gold)}
-/* Date and title make each writing readable at a glance. */
-#writings{padding-top:115px}
-#writings .essay-section-head{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,250px);gap:30px;align-items:end;margin-bottom:38px}
-#writings .essay-section-head h2{font:700 clamp(36px,5vw,66px)/1.18 var(--sans);letter-spacing:-.055em;color:var(--strong)}
-#writings .essay-section-head .section-lead{text-align:right;font:13px/1.85 var(--serif);color:var(--muted)}
-#writings .tabs{gap:0;margin-bottom:8px;border-bottom:1px solid var(--line)}
-#writings .tab{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:13px 22px 14px 0;margin-right:20px;font:600 13px/1.4 var(--sans);color:var(--muted)}
-#writings .tab[aria-selected="true"]{border-bottom-color:var(--gold);color:var(--strong);background:none}
-#writings .article-list{border-top:0;min-height:0}
-#writings .article-row{display:grid;grid-template-columns:minmax(96px,20%) minmax(0,1fr) auto;gap:18px;align-items:center;min-height:95px;padding:19px 8px;border-bottom:1px solid var(--line);transition:background .2s,padding .2s}
-#writings .article-row:hover,#writings .article-row:focus-visible{background:rgba(var(--accent-pigment-rgb),.07);padding-left:17px}
-#writings .article-row[hidden]{display:none}
-#writings .article-date{font:600 14px/1.5 var(--sans);letter-spacing:.02em;color:var(--strong)}
-#writings .article-title{font:600 clamp(18px,2vw,27px)/1.4 var(--sans);letter-spacing:-.025em;color:var(--strong)}
-#writings .article-excerpt{display:none}
-#writings .article-cat{font:600 11px/1.5 var(--sans);letter-spacing:.08em;color:var(--gold);white-space:nowrap}
-.article-empty{padding:42px 8px;font:14px/1.8 var(--serif);color:var(--muted);border-bottom:1px solid var(--line)}
-.article-empty[hidden]{display:none}
-#essayReader .essay-panel{width:min(830px,100%);padding:clamp(25px,4vw,55px)}
-#essayReader .essay-reader-meta{display:flex;align-items:center;gap:22px;margin-bottom:15px}
-#essayReader .essay-reader-meta .kicker{margin:0}
-#essayReader .essay-reader-meta time{font:600 11px/1.5 var(--sans);letter-spacing:.08em;color:var(--muted)}
-#essayReader .essay-panel-head h3{font:600 clamp(27px,3.8vw,42px)/1.4 var(--serif)}
-#essayReader .essay-read-body{max-height:min(60vh,650px);font-size:16px;line-height:2.15}
 /* The native pointer remains usable; a colored ring and short fading trail decorate it. */
 .cursor-ring,.cursor-trail{position:fixed;left:0;top:0;z-index:250;pointer-events:none}
 .cursor-ring{width:38px;height:38px;border:1.5px solid var(--gold);border-radius:50%;opacity:0;transform:translate3d(-100px,-100px,0);transition:width .2s,height .2s,opacity .2s,border-color .2s;box-shadow:0 0 14px rgba(var(--accent-pigment-rgb),.2)}
@@ -1223,12 +1181,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
   .work-intro p,.work-years span{display:none}
 }
 @media(max-width:600px){
-  .entry-cover{padding:25px 22px 30px}
-  .entry-cover__top,.entry-cover__bottom{font-size:10px;gap:10px}
-  .entry-cover h1{font-size:clamp(39px,10vw,62px);letter-spacing:-.08em}
-  .entry-cover__eyebrow{font-size:9px}
-  .entry-cover__center p{font-size:12px;letter-spacing:.13em}
-  #projects.work-section{padding-top:55px}
+  #work.work-section{padding-top:55px}
   .work-intro h2,.work-years strong{font-size:clamp(51px,13vw,74px)}
   .work-stage{height:365px}
   .work-tile{width:35%;height:125px;padding:11px}
@@ -1237,14 +1190,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
   .work-tile--micro{left:12%;top:12%}.work-tile--bio{left:52%;top:54%}
   .work-tile--cqu{left:60%;top:4%}.work-tile--zju{left:4%;top:55%}
   .work-foot{font-size:9px}
-  #writings{padding-top:80px}
-  #writings .essay-section-head{grid-template-columns:1fr;gap:8px}
-  #writings .essay-section-head h2{font-size:clamp(32px,8vw,44px)}
-  #writings .essay-section-head .section-lead{text-align:left}
-  #writings .article-row{grid-template-columns:85px minmax(0,1fr);gap:12px;min-height:83px}
-  #writings .article-date{font-size:11px}
-  #writings .article-title{font-size:18px}
-  #writings .article-cat{grid-column:2;font-size:10px}
 }
 @media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.cursor-ring,.cursor-trail{display:none}}
 /* The hero is a daily quote, read only from the owner-curated quote list. */
@@ -1272,6 +1217,47 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
 </style>
 </head>
 <body>
+<div class="page-loader" id="siteLoader" role="status" aria-label="页面正在加载">
+ <span class="page-loader__corner">PERSONAL ARCHIVE</span>
+ <span class="page-loader__corner page-loader__corner--right">HELLOWORLD</span>
+ <div class="page-loader__body">
+  <span class="page-loader__mark" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" opacity=".25"/><ellipse class="loader-orbit-one" cx="50" cy="50" rx="41" ry="16" transform="rotate(28 50 50)"/><ellipse class="loader-orbit-two" cx="50" cy="50" rx="38" ry="19" transform="rotate(-35 50 50)"/><circle class="loader-core" cx="50" cy="50" r="7"/><circle class="loader-core" cx="15" cy="34" r="2"/><circle class="loader-core" cx="79" cy="71" r="1.5"/></svg></span>
+  <p class="page-loader__label">DionisApollo</p>
+  <p class="page-loader__headline">我们在此相遇</p>
+  <div class="page-loader__progress" aria-hidden="true"><span></span></div>
+ </div>
+ <div class="page-loader__bottom"><span>PROJECTS · ESSAYS · LIFE</span><button class="page-loader__loading" type="button" aria-label="LOADING" title="LOADING"><span class="loading-letter" style="--i:0" aria-hidden="true">L</span><span class="loading-letter" style="--i:1" aria-hidden="true">O</span><span class="loading-letter" style="--i:2" aria-hidden="true">A</span><span class="loading-letter" style="--i:3" aria-hidden="true">D</span><span class="loading-letter" style="--i:4" aria-hidden="true">I</span><span class="loading-letter" style="--i:5" aria-hidden="true">N</span><span class="loading-letter" style="--i:6" aria-hidden="true">G</span></button></div>
+</div>
+<noscript><style>.page-loader{display:none!important}</style></noscript>
+<script>
+/* Restore the original short opening transition into the homepage. */
+(function(){
+ var loader=document.getElementById('siteLoader');
+ if(!loader)return;
+ var loadingLetters=loader.querySelector('.page-loader__loading');
+ if(loadingLetters){
+  loadingLetters.addEventListener('click',function(){
+   loadingLetters.classList.remove('is-tapped');
+   void loadingLetters.offsetWidth;
+   loadingLetters.classList.add('is-tapped');
+   window.setTimeout(function(){loadingLetters.classList.remove('is-tapped')},1000);
+  });
+ }
+ var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var start=Date.now(),finished=false;
+ function dismiss(){
+  if(finished)return;finished=true;
+  var elapsed=Date.now()-start;
+  var delay=reduced?0:Math.max(0,1630-elapsed);
+  setTimeout(function(){loader.classList.add('is-finished');
+   setTimeout(function(){if(loader.parentNode)loader.parentNode.removeChild(loader)},reduced?20:900);
+  },delay);
+ }
+ if(document.readyState==='complete')dismiss();
+ else window.addEventListener('load',dismiss,{once:true});
+ setTimeout(dismiss,3500);
+})();
+</script>
 <a class="skip-link" href="#main">跳至正文</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.8 4.8"/></symbol>
@@ -1286,11 +1272,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
   <symbol id="i-orbit" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-21 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(52 12 12)"/><circle cx="12" cy="12" r="2.3"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
 </svg>
-<section class="entry-cover" id="cover" aria-labelledby="coverTitle">
- <div class="entry-cover__top"><span class="entry-cover__identity"><span class="entry-cover__square" aria-hidden="true"></span>DionisApollo</span><a href="#main">进入网站 ↗</a></div>
- <div class="entry-cover__center"><span class="entry-cover__eyebrow">A PLACE TO MEET · 2026</span><h1 id="coverTitle">我们在此相遇<span aria-hidden="true">。</span></h1><p>循知而行，向远而生。</p></div>
- <div class="entry-cover__bottom"><span>RESEARCH · NOTES · LIFE</span><a href="#main">向下探索 <span aria-hidden="true">↓</span></a></div>
-</section>
 <header class="site-header" id="top">
  <div class="wrap header-in">
   <div class="brand">
@@ -1357,7 +1338,12 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
 
 
 
-  <section id="projects" class="section work-section reveal" aria-labelledby="workTitle">
+  <section id="projects" class="section reveal">
+   <div class="section-head"><div><span class="kicker">PROJECTS</span><h2>研究<span class="accent">项目</span></h2></div></div>
+   <div class="cards" aria-label="研究项目列表"></div>
+  </section>
+
+  <section id="work" class="section work-section reveal" aria-labelledby="workTitle">
    <div class="work-layout">
     <div class="work-intro"><span class="kicker">RESEARCH / DIRECTION</span><h2 id="workTitle">Work</h2><p>从智能制造走向生物微纳制造。</p></div>
     <div class="work-stage" aria-label="研究方向">
@@ -1373,14 +1359,13 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
 
 
   <section id="writings" class="section reveal">
-   <div class="section-head essay-section-head"><div><span class="kicker">WRITINGS / ARCHIVE</span><h2>研究札记<span class="accent">与</span>随笔杂记</h2></div><p class="section-lead">时间在左，文字在右。选择标题阅读正文。</p></div>
+   <div class="section-head essay-section-head"><div><span class="kicker">ESSAYS</span><h2>文字<span class="accent">记录</span></h2></div></div>
    <div class="tabs" role="tablist" aria-label="文章分类">
     <button class="tab" role="tab" aria-selected="true" data-filter="all">全部</button>
     <button class="tab" role="tab" aria-selected="false" data-filter="research">研究札记</button>
     <button class="tab" role="tab" aria-selected="false" data-filter="literature">随笔杂记</button>
    </div>
    <div class="article-list" id="articleList" aria-label="文章列表"></div>
-    <p class="article-empty" id="articleEmpty" hidden>这个分类还没有公开文章。</p>
   </section>
 
 
@@ -1508,7 +1493,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
 </div>
 <div class="essay-overlay" id="essayReader" role="dialog" aria-modal="true" aria-labelledby="essayReaderTitle" hidden>
   <div class="essay-panel">
-    <div class="essay-panel-head"><div><div class="essay-reader-meta"><span class="kicker" id="essayReaderCategory">ESSAYS</span><time id="essayReaderDate"></time></div><h3 id="essayReaderTitle"></h3></div><button class="essay-x" type="button" id="essayReaderClose" aria-label="关闭文章">×</button></div>
+    <div class="essay-panel-head"><div><span class="kicker" id="essayReaderCategory">ESSAYS</span><h3 id="essayReaderTitle"></h3></div><button class="essay-x" type="button" id="essayReaderClose" aria-label="关闭文章">×</button></div>
     <div class="essay-read-body" id="essayReaderBody"></div>
     <div class="essay-actions"><button type="button" class="essay-secondary" id="essayDelete">删除本地文章</button><button type="button" class="essay-primary" id="essayReaderDone">关闭</button></div>
   </div>
@@ -1622,12 +1607,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
  $('#navSearch').addEventListener('click',()=>{closeNav(false);openSearch()});
 
  const filterButtons=$$('.tab');
-  function filterNotes(cat){
-    filterButtons.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.filter===cat)));
-    const rows=$$('#articleList .article-row');
-    rows.forEach(row=>row.hidden=(cat!=='all'&&row.dataset.category!==cat));
-    $('#articleEmpty').hidden=rows.some(row=>!row.hidden);
-  }
+ function filterNotes(cat){filterButtons.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.filter===cat)));$$('#articleList .article-row').forEach(row=>row.hidden=(cat!=='all'&&row.dataset.category!==cat))}
  filterButtons.forEach(btn=>btn.addEventListener('click',()=>filterNotes(btn.dataset.filter)));
 
  // Build an offline search index from the text actually present on this page.
@@ -1635,7 +1615,8 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
  const categoryNames={research:'研究札记',literature:'随笔杂记'};
  const meta=[
     {id:'about',type:'ABOUT',title:'关于我',textSelector:'.about-grid'},
-    ...$$('#projects .work-tile[id]').map(el=>({id:el.id,type:'PROJECTS',title:el.querySelector('h3')?.textContent.trim()||el.textContent.trim()})),
+    ...$$('#projects .card[id]').map(el=>({id:el.id,type:'PROJECTS',title:el.querySelector('h3')?.textContent.trim()||'未命名项目'})),
+    ...$$('#work .work-tile[id]').map(el=>({id:el.id,type:'WORK',title:el.querySelector('h3')?.textContent.trim()||el.textContent.trim()})),
    ...$$('#writings .article-row').map(el=>({id:el.id,type:'ESSAY',title:el.querySelector('.article-title')?.textContent.trim()||'文章'})),
    {id:'philosophy',type:'ATTITUDE',title:'理念'},
    {id:'contact',type:'CONTACT',title:'联络'}
@@ -1771,7 +1752,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
    $('#essayReaderDone').addEventListener('click',()=>hideModal(reader));
    [editor,reader].forEach(el=>el.addEventListener('click',e=>{if(e.target===el)hideModal(el)}));
    document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!editor.hidden){hideModal(editor)}if(!reader.hidden){hideModal(reader)}}});
-     function showReader(n){currentId=n.id;$('#essayReaderTitle').textContent=n.title;$('#essayReaderCategory').textContent=categoryNames[n.category];$('#essayReaderDate').textContent=n.date;$('#essayReaderBody').textContent=n.body;$('#essayDelete').hidden=!!n.isPublic;showModal(reader)}
+     function showReader(n){currentId=n.id;$('#essayReaderTitle').textContent=n.title;$('#essayReaderCategory').textContent=categoryNames[n.category];$('#essayReaderBody').textContent=n.body;$('#essayDelete').hidden=!!n.isPublic;showModal(reader)}
    function addRow(n,atTop){
      const row=document.createElement('article');row.className='article-row article-draft';row.id=n.id;row.dataset.category=n.category;row.tabIndex=0;row.setAttribute('role','button');row.setAttribute('aria-label','阅读 '+n.title);
      const date=document.createElement('div');date.className='article-date';date.textContent=n.date;
@@ -1786,7 +1767,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
    }
    items.slice().reverse().forEach(n=>addRow(n,true));
     addRow(publicNote,true);
-    filterNotes('all');
    $('#essayForm').addEventListener('submit',e=>{
      e.preventDefault();const title=$('#essayTitle').value.trim(),bodyText=$('#essayBody').value.trim(),cat=$('#essayCategory').value;
      if(!title||!bodyText)return;
@@ -1796,7 +1776,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
    $('#essayDelete').addEventListener('click',()=>{
       if(!currentId||currentId===publicNote.id)return;items=items.filter(n=>n.id!==currentId);persist();document.getElementById(currentId)?.remove();
       const i=indexed.findIndex(it=>it.id===currentId);if(i>=0)indexed.splice(i,1);hideModal(reader);currentId=null;
-      filterNotes(filterButtons.find(b=>b.getAttribute('aria-selected')==='true')?.dataset.filter||'all');
    });
  })();
 
