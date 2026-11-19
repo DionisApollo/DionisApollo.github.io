@@ -1141,79 +1141,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
   .hero-sky::before{opacity:.45}
   .hero-meteor{display:none}
 }
-/* Floating editorial cards use existing research themes and campus imagery. */
-#work.work-section{padding:86px 0 45px;overflow:hidden}
-.work-layout{display:grid;grid-template-columns:minmax(0,20fr) minmax(0,60fr) minmax(0,20fr);align-items:center;min-height:570px}
-.work-intro,.work-years{position:relative;z-index:2}
-.work-intro .kicker{margin-bottom:15px;font:600 11px/1.4 var(--sans);letter-spacing:.13em}
-.work-intro h2{font:700 clamp(80px,8vw,128px)/.94 var(--sans);letter-spacing:-.085em;color:var(--strong);margin:0 0 18px}
-.work-intro p{font:13px/1.8 var(--serif);color:var(--muted);max-width:175px;margin:0}
-.work-years{text-align:right;align-self:center}
-.work-years strong{display:block;font:700 clamp(64px,6vw,94px)/.94 var(--sans);letter-spacing:-.09em;white-space:nowrap;color:var(--strong)}
-.work-years span{display:block;font:600 10px/1.6 var(--sans);letter-spacing:.18em;color:var(--muted);margin-top:17px}
-.work-stage{height:570px;position:relative;isolation:isolate}
-.work-tile{position:absolute;display:flex;flex-direction:column;justify-content:space-between;width:clamp(142px,26%,205px);height:clamp(119px,25%,174px);padding:17px;background:var(--panel);border:1px solid var(--line-strong);box-shadow:0 18px 46px rgba(0,0,0,.12);color:var(--strong);transform:rotate(var(--tilt));transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;overflow:hidden}
-.work-tile:hover,.work-tile:focus-visible{z-index:5;transform:translateY(-12px) rotate(0deg) scale(1.05);border-color:var(--gold);box-shadow:0 25px 60px rgba(0,0,0,.2)}
-.work-tile>span,.work-tile small{position:relative;z-index:1;font:600 9px/1.3 var(--sans);letter-spacing:.1em}
-.work-tile h3{position:relative;z-index:1;font:700 clamp(20px,2.2vw,29px)/1.16 var(--sans);letter-spacing:-.055em;margin:0}
-.work-tile--micro{--tilt:-9deg;left:18%;top:14%;background:#0b0c0e;color:#fff}
-.work-tile--micro h3{color:#fff}
-.work-tile--bio{--tilt:8deg;left:48%;top:52%;background:var(--gold);color:var(--bg)}
-.work-tile--bio h3{color:var(--bg)}
-.work-tile--cqu{--tilt:11deg;left:66%;top:6%;padding:0}
-.work-tile--zju{--tilt:-7deg;left:4%;top:57%;padding:0}
-.work-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);transition:filter .35s ease}
-.work-tile:hover img,.work-tile:focus-visible img{filter:grayscale(0)}
-.work-tile--cqu>span,.work-tile--zju>span{margin-top:auto;padding:12px 14px;width:100%;background:linear-gradient(transparent,rgba(0,0,0,.8));color:#fff}
-.work-foot{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding:19px 0 0;font:600 11px/1.5 var(--sans);letter-spacing:.11em;color:var(--muted)}
-.work-foot a{color:var(--gold)}
-/* The native pointer remains usable; a colored ring and short fading trail decorate it. */
-.cursor-ring,.cursor-trail{position:fixed;left:0;top:0;z-index:250;pointer-events:none}
-.cursor-ring{width:38px;height:38px;border:1.5px solid var(--gold);border-radius:50%;opacity:0;transform:translate3d(-100px,-100px,0);transition:width .2s,height .2s,opacity .2s,border-color .2s;box-shadow:0 0 14px rgba(var(--accent-pigment-rgb),.2)}
-.cursor-ring.is-visible{opacity:.9}
-.cursor-ring.is-hover{width:54px;height:54px}
-.cursor-trail{width:100vw;height:100vh;opacity:.85}
-@media(max-width:900px){
-  .work-layout{grid-template-columns:1fr 1fr;min-height:0}
-  .work-intro{grid-column:1;grid-row:1}.work-years{grid-column:2;grid-row:1}
-  .work-stage{grid-column:1/-1;grid-row:2;height:470px}
-  .work-intro h2,.work-years strong{font-size:clamp(62px,10vw,98px)}
-  .work-intro p,.work-years span{display:none}
-}
-@media(max-width:600px){
-  #work.work-section{padding-top:55px}
-  .work-intro h2,.work-years strong{font-size:clamp(51px,13vw,74px)}
-  .work-stage{height:365px}
-  .work-tile{width:35%;height:125px;padding:11px}
-  .work-tile h3{font-size:clamp(17px,5vw,24px)}
-  .work-tile>span,.work-tile small{font-size:7px}
-  .work-tile--micro{left:12%;top:12%}.work-tile--bio{left:52%;top:54%}
-  .work-tile--cqu{left:60%;top:4%}.work-tile--zju{left:4%;top:55%}
-  .work-foot{font-size:9px}
-}
-@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.cursor-ring,.cursor-trail{display:none}}
-/* The hero is a daily quote, read only from the owner-curated quote list. */
-.daily-quote{max-width:720px}
-.daily-quote__meta{display:flex;align-items:center;gap:16px;margin:0 0 20px;font:600 11px/1.5 var(--sans);letter-spacing:.2em;color:var(--gold)}
-.daily-quote__meta time{color:var(--muted);letter-spacing:.12em}
-.hero #hello.daily-quote__line{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:13px;row-gap:1px;margin:0;max-width:720px;font-family:var(--serif);font-weight:600;font-size:clamp(32px,3.7vw,53px)!important;line-height:1.52;letter-spacing:.045em;color:var(--heading)}
-.daily-quote__text{min-width:0;overflow-wrap:anywhere}
-.hero #hello .daily-quote__credit{font:normal clamp(14px,1.5vw,19px)/1.7 var(--serif);letter-spacing:.04em;color:var(--gold);white-space:nowrap}
-.daily-quote__credit[hidden]{display:none}
-.daily-quote__nav{display:flex;align-items:center;gap:15px;margin:20px 0 0;color:var(--muted);font:11px/1.4 var(--sans);letter-spacing:.12em}
-.daily-quote__nav[hidden]{display:none}
-.daily-quote__nav button{width:31px;height:31px;border:1px solid var(--line-strong);border-radius:50%;display:grid;place-items:center;background:transparent;color:var(--gold);font-size:17px;line-height:1;transition:border-color .2s,background .2s}
-.daily-quote__nav button:hover,.daily-quote__nav button:focus-visible{border-color:var(--gold);background:var(--hover)}
-@media(max-width:840px){
-  .daily-quote{margin-inline:auto}
-  .daily-quote__meta,.hero #hello.daily-quote__line,.daily-quote__nav{justify-content:center}
-  .hero #hello.daily-quote__line{font-size:clamp(30px,5.2vw,44px)!important}
-}
-@media(max-width:480px){
-  .daily-quote__meta{font-size:10px;margin-bottom:15px}
-  .hero #hello.daily-quote__line{font-size:clamp(27px,7.3vw,34px)!important;line-height:1.5;justify-content:center}
-  .hero #hello .daily-quote__credit{font-size:14px}
-}
 </style>
 </head>
 <body>
@@ -1223,26 +1150,26 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
  <div class="page-loader__body">
   <span class="page-loader__mark" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" opacity=".25"/><ellipse class="loader-orbit-one" cx="50" cy="50" rx="41" ry="16" transform="rotate(28 50 50)"/><ellipse class="loader-orbit-two" cx="50" cy="50" rx="38" ry="19" transform="rotate(-35 50 50)"/><circle class="loader-core" cx="50" cy="50" r="7"/><circle class="loader-core" cx="15" cy="34" r="2"/><circle class="loader-core" cx="79" cy="71" r="1.5"/></svg></span>
   <p class="page-loader__label">DionisApollo</p>
-  <p class="page-loader__headline">我们在此相遇</p>
+  <p class="page-loader__headline">循知而行<span>向远而生</span></p>
   <div class="page-loader__progress" aria-hidden="true"><span></span></div>
  </div>
  <div class="page-loader__bottom"><span>PROJECTS · ESSAYS · LIFE</span><button class="page-loader__loading" type="button" aria-label="LOADING" title="LOADING"><span class="loading-letter" style="--i:0" aria-hidden="true">L</span><span class="loading-letter" style="--i:1" aria-hidden="true">O</span><span class="loading-letter" style="--i:2" aria-hidden="true">A</span><span class="loading-letter" style="--i:3" aria-hidden="true">D</span><span class="loading-letter" style="--i:4" aria-hidden="true">I</span><span class="loading-letter" style="--i:5" aria-hidden="true">N</span><span class="loading-letter" style="--i:6" aria-hidden="true">G</span></button></div>
 </div>
 <noscript><style>.page-loader{display:none!important}</style></noscript>
 <script>
-/* Restore the original short opening transition into the homepage. */
+/* A short opening transition, kept separate from the site's navigation/search logic. */
 (function(){
  var loader=document.getElementById('siteLoader');
  if(!loader)return;
- var loadingLetters=loader.querySelector('.page-loader__loading');
- if(loadingLetters){
-  loadingLetters.addEventListener('click',function(){
-   loadingLetters.classList.remove('is-tapped');
-   void loadingLetters.offsetWidth;
-   loadingLetters.classList.add('is-tapped');
-   window.setTimeout(function(){loadingLetters.classList.remove('is-tapped')},1000);
-  });
- }
+  var loadingLetters=loader.querySelector('.page-loader__loading');
+  if(loadingLetters){
+   loadingLetters.addEventListener('click',function(){
+    loadingLetters.classList.remove('is-tapped');
+    void loadingLetters.offsetWidth;
+    loadingLetters.classList.add('is-tapped');
+    window.setTimeout(function(){loadingLetters.classList.remove('is-tapped')},1000);
+   });
+  }
  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  var start=Date.now(),finished=false;
  function dismiss(){
@@ -1317,11 +1244,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
    </div>
    <div class="hero-copy">
     <p class="hero-hello">Hello, I’m <span class="hero-name-accent">ZHONG</span>!</p>
-     <div class="daily-quote" id="dailyQuote" aria-label="每日金句">
-      <div class="daily-quote__meta"><span>每日金句 / DAILY QUOTE</span><time id="dailyQuoteDate"></time></div>
-      <h1 id="hello" class="daily-quote__line" aria-live="polite" aria-atomic="true"><span class="daily-quote__text" id="dailyQuoteText">正在读取金句…</span><cite class="daily-quote__credit" id="dailyQuoteCredit" hidden></cite></h1>
-      <div class="daily-quote__nav" id="dailyQuoteNav" hidden><button type="button" id="dailyQuotePrev" aria-label="上一句金句">←</button><span id="dailyQuotePosition"></span><button type="button" id="dailyQuoteNext" aria-label="下一句金句">→</button></div>
-     </div>
+    <h1 id="hello"><span class="hero-line">星星之火，</span><span class="hero-line hero-line-second">可以燎原<span class="hero-dot">。</span></span></h1>
     <nav class="hero-social" aria-label="个人内容快捷入口">
      <a class="social-link" href="#contact" title="联络" aria-label="联络"><svg class="icon"><use href="#i-mail"/></svg></a>
      <a class="social-link" href="#projects" title="研究" aria-label="研究"><svg class="icon"><use href="#i-orbit"/></svg></a>
@@ -1340,22 +1263,8 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
 
   <section id="projects" class="section reveal">
    <div class="section-head"><div><span class="kicker">PROJECTS</span><h2>研究<span class="accent">项目</span></h2></div></div>
-   <div class="cards" aria-label="研究项目列表"></div>
-  </section>
-
-  <section id="work" class="section work-section reveal" aria-labelledby="workTitle">
-   <div class="work-layout">
-    <div class="work-intro"><span class="kicker">RESEARCH / DIRECTION</span><h2 id="workTitle">Work</h2><p>从智能制造走向生物微纳制造。</p></div>
-    <div class="work-stage" aria-label="研究方向">
-     <a class="work-tile work-tile--micro" id="project-micro" href="#about"><span>01 / RESEARCH</span><h3>微纳米<br>机器人</h3><small>MICRO / NANO ROBOTICS ↗</small></a>
-     <a class="work-tile work-tile--bio" id="project-bio" href="#about"><span>02 / RESEARCH</span><h3>生物微纳<br>制造</h3><small>BIOFABRICATION ↗</small></a>
-     <a class="work-tile work-tile--cqu" id="project-cqu" href="#about"><img src="assets/cqu-campus.png" alt="重庆大学校园"><span>智能制造 / 起点</span></a>
-     <a class="work-tile work-tile--zju" id="project-zju" href="#about"><img src="assets/zju-campus.jpg" alt="浙江大学校园"><span>生物制造 / 继续探索</span></a>
-    </div>
-    <div class="work-years"><strong>24–26</strong><span>EXPLORING<br>WHAT'S NEXT</span></div>
-   </div>
-   <div class="work-foot"><span>ONGOING EXPLORATION / 持续探索</span><a href="#about">了解研究方向 ↗</a></div>
-  </section>
+    <div class="cards" aria-label="研究项目列表"></div>
+   </section>
 
 
   <section id="writings" class="section reveal">
@@ -1615,8 +1524,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
  const categoryNames={research:'研究札记',literature:'随笔杂记'};
  const meta=[
     {id:'about',type:'ABOUT',title:'关于我',textSelector:'.about-grid'},
-    ...$$('#projects .card[id]').map(el=>({id:el.id,type:'PROJECTS',title:el.querySelector('h3')?.textContent.trim()||'未命名项目'})),
-    ...$$('#work .work-tile[id]').map(el=>({id:el.id,type:'WORK',title:el.querySelector('h3')?.textContent.trim()||el.textContent.trim()})),
+   ...$$('#projects .card[id]').map(el=>({id:el.id,type:'PROJECTS',title:el.querySelector('h3')?.textContent.trim()||'未命名项目'})),
    ...$$('#writings .article-row').map(el=>({id:el.id,type:'ESSAY',title:el.querySelector('.article-title')?.textContent.trim()||'文章'})),
    {id:'philosophy',type:'ATTITUDE',title:'理念'},
    {id:'contact',type:'CONTACT',title:'联络'}
@@ -1629,59 +1537,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
    let keywords=(el.dataset.index||'')+' '+(data.dataset.index||'');
    indexed.push({...m,description,category,keywords,href:'#'+m.id});
  });
-  // Only the owner-curated repository list can supply a daily quote.
-  const quoteText=$('#dailyQuoteText'),quoteCredit=$('#dailyQuoteCredit');
-  const quoteDate=$('#dailyQuoteDate'),quoteNav=$('#dailyQuoteNav'),quotePosition=$('#dailyQuotePosition');
-  let curatedQuotes=[],quoteIndex=0,quoteDay='';
-  function dayInShanghai(){
-    const parts=Object.fromEntries(new Intl.DateTimeFormat('en-US',{
-      timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'
-    }).formatToParts(new Date()).filter(p=>p.type!=='literal').map(p=>[p.type,Number(p.value)]));
-    return {key:`${parts.year}-${String(parts.month).padStart(2,'0')}-${String(parts.day).padStart(2,'0')}`,
-      number:Math.floor(Date.UTC(parts.year,parts.month-1,parts.day)/86400000)};
-  }
-  function showQuote(){
-    const q=curatedQuotes[quoteIndex];if(!q)return;
-    quoteText.textContent=q.text;
-    quoteCredit.textContent=q.attribution?'—— '+q.attribution:'';
-    quoteCredit.hidden=!q.attribution;
-    quotePosition.textContent=`${String(quoteIndex+1).padStart(2,'0')} / ${String(curatedQuotes.length).padStart(2,'0')}`;
-    quoteNav.hidden=curatedQuotes.length<2;
-  }
-  function selectDailyQuote(){
-    const day=dayInShanghai();quoteDay=day.key;
-    quoteDate.dateTime=day.key;quoteDate.textContent=day.key.replace(/-/g,'.');
-    if(curatedQuotes.length){quoteIndex=((day.number%curatedQuotes.length)+curatedQuotes.length)%curatedQuotes.length;showQuote()}
-  }
-  function stepQuote(direction){
-    if(curatedQuotes.length<2)return;
-    quoteIndex=(quoteIndex+direction+curatedQuotes.length)%curatedQuotes.length;showQuote();
-  }
-  $('#dailyQuotePrev').addEventListener('click',()=>stepQuote(-1));
-  $('#dailyQuoteNext').addEventListener('click',()=>stepQuote(1));
-  let wheelAt=0,touchStart=null;
-  $('#dailyQuote').addEventListener('wheel',e=>{
-    if(curatedQuotes.length<2||Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;
-    e.preventDefault();const now=performance.now();if(now-wheelAt<350)return;wheelAt=now;
-    stepQuote(e.deltaX>0?1:-1);
-  },{passive:false});
-  $('#dailyQuote').addEventListener('touchstart',e=>{const t=e.changedTouches[0];touchStart={x:t.clientX,y:t.clientY}},{passive:true});
-  $('#dailyQuote').addEventListener('touchend',e=>{
-    if(!touchStart||curatedQuotes.length<2)return;
-    const t=e.changedTouches[0],dx=t.clientX-touchStart.x,dy=t.clientY-touchStart.y;touchStart=null;
-    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.25)stepQuote(dx<0?1:-1);
-  },{passive:true});
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&curatedQuotes.length&&dayInShanghai().key!==quoteDay)selectDailyQuote()});
-  fetch('assets/quotes.json',{cache:'no-store'}).then(response=>{
-    if(!response.ok)throw new Error('Quote list unavailable');return response.json();
-  }).then(data=>{
-    curatedQuotes=Array.isArray(data.quotes)?data.quotes.filter(q=>q&&typeof q.text==='string'&&q.text.trim()&&q.text.length<=500).map(q=>({
-      text:q.text.trim(),attribution:typeof q.attribution==='string'?q.attribution.trim().slice(0,100):''
-    })):[];
-    if(!curatedQuotes.length){quoteText.textContent='暂无金句';return}
-    selectDailyQuote();
-    indexed.push({id:'hello',type:'QUOTE',title:'每日金句',description:curatedQuotes.map(q=>q.text+' '+q.attribution).join(' '),keywords:'每日金句',category:'',href:'#hello'});
-  }).catch(()=>{quoteText.textContent='金句暂不可用'});
  const esc=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
  function tokensOf(s){return s.trim().toLowerCase().split(/\s+/).filter(Boolean)}
  function markText(text,tokens){
@@ -1752,7 +1607,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
    $('#essayReaderDone').addEventListener('click',()=>hideModal(reader));
    [editor,reader].forEach(el=>el.addEventListener('click',e=>{if(e.target===el)hideModal(el)}));
    document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!editor.hidden){hideModal(editor)}if(!reader.hidden){hideModal(reader)}}});
-     function showReader(n){currentId=n.id;$('#essayReaderTitle').textContent=n.title;$('#essayReaderCategory').textContent=categoryNames[n.category];$('#essayReaderBody').textContent=n.body;$('#essayDelete').hidden=!!n.isPublic;showModal(reader)}
+    function showReader(n){currentId=n.id;$('#essayReaderTitle').textContent=n.title;$('#essayReaderCategory').textContent=categoryNames[n.category];$('#essayReaderBody').textContent=n.body;$('#essayDelete').hidden=!!n.isPublic;showModal(reader)}
    function addRow(n,atTop){
      const row=document.createElement('article');row.className='article-row article-draft';row.id=n.id;row.dataset.category=n.category;row.tabIndex=0;row.setAttribute('role','button');row.setAttribute('aria-label','阅读 '+n.title);
      const date=document.createElement('div');date.className='article-date';date.textContent=n.date;
@@ -1775,7 +1630,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
    });
    $('#essayDelete').addEventListener('click',()=>{
       if(!currentId||currentId===publicNote.id)return;items=items.filter(n=>n.id!==currentId);persist();document.getElementById(currentId)?.remove();
-      const i=indexed.findIndex(it=>it.id===currentId);if(i>=0)indexed.splice(i,1);hideModal(reader);currentId=null;
+     const i=indexed.findIndex(it=>it.id===currentId);if(i>=0)indexed.splice(i,1);hideModal(reader);currentId=null;
    });
  })();
 
@@ -2020,67 +1875,6 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
  if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.06});$$('.reveal').forEach(el=>io.observe(el))}else $$('.reveal').forEach(el=>el.classList.add('visible'));
  // Highlight the relevant left-nav entry as the user scrolls through the page.
  if('IntersectionObserver' in window){const navLinks=$$('#navTree [data-nav-link]');const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;let id=entry.target.id;navLinks.forEach(a=>a.removeAttribute('aria-current'));let chosen=navLinks.find(a=>a.getAttribute('href')==='#'+id);if(chosen)chosen.setAttribute('aria-current','location')})},{rootMargin:'-20% 0px -65% 0px'});$$('main section[id]').forEach(el=>io.observe(el))}
-})();
-</script>
-<canvas class="cursor-trail" id="cursorTrail" aria-hidden="true"></canvas>
-<span class="cursor-ring" id="cursorRing" aria-hidden="true"></span>
-<script>
-(() => {
-  const ring=document.getElementById('cursorRing');
-  const canvas=document.getElementById('cursorTrail');
-  const ctx=canvas.getContext('2d');
-  if(!ctx)return;
-  const fine=matchMedia('(hover:hover) and (pointer:fine)');
-  const reduced=matchMedia('(prefers-reduced-motion:reduce)');
-  let width=0,height=0,targetX=-100,targetY=-100,ringX=-100,ringY=-100,points=[],frameId=0;
-  function resize(){
-    const dpr=Math.min(devicePixelRatio||1,2);
-    width=innerWidth;height=innerHeight;
-    canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  function hide(){
-    ring.classList.remove('is-visible','is-hover');
-    points=[];if(frameId)cancelAnimationFrame(frameId);frameId=0;
-    ctx.clearRect(0,0,width,height);
-  }
-  function draw(now){
-    frameId=0;
-    if(document.hidden||!fine.matches||reduced.matches){hide();return}
-    ringX+=(targetX-ringX)*.28;ringY+=(targetY-ringY)*.28;
-    const size=ring.classList.contains('is-hover')?54:38;
-    ring.style.transform=`translate3d(${ringX-size/2}px,${ringY-size/2}px,0)`;
-    points=points.filter(point=>now-point.time<420);
-    ctx.clearRect(0,0,width,height);
-    ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=2.1;
-    ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--gold').trim()||'#bfa785';
-    for(let i=1;i<points.length;i++){
-      const previous=points[i-1],point=points[i];
-      ctx.globalAlpha=Math.max(0,(1-(now-point.time)/420)*.52);
-      ctx.beginPath();ctx.moveTo(previous.x,previous.y);ctx.lineTo(point.x,point.y);ctx.stroke();
-    }
-    ctx.globalAlpha=1;
-    if(points.length||Math.abs(targetX-ringX)>.4||Math.abs(targetY-ringY)>.4)frameId=requestAnimationFrame(draw);
-  }
-  function move(event){
-    if(event.pointerType!=='mouse'||!fine.matches||reduced.matches)return;
-    targetX=event.clientX;targetY=event.clientY;
-    if(ringX<0){ringX=targetX;ringY=targetY}
-    ring.classList.add('is-visible');
-    ring.classList.toggle('is-hover',event.target instanceof Element&&!!event.target.closest('a,button,input,textarea,select,[role="button"]'));
-    const now=performance.now(),last=points[points.length-1];
-    if(!last||Math.hypot(last.x-targetX,last.y-targetY)>4)points.push({x:targetX,y:targetY,time:now});
-    if(points.length>28)points.shift();
-    if(!frameId)frameId=requestAnimationFrame(draw);
-  }
-  resize();
-  addEventListener('resize',resize,{passive:true});
-  addEventListener('pointermove',move,{passive:true});
-  document.addEventListener('pointerout',event=>{if(!event.relatedTarget)hide()});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)hide()});
-  addEventListener('blur',hide);
-  if(reduced.addEventListener)reduced.addEventListener('change',hide);
-  if(fine.addEventListener)fine.addEventListener('change',hide);
 })();
 </script>
 </body>
