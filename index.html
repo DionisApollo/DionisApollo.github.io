@@ -1122,8 +1122,8 @@ html[data-theme="dark"] .hero-sky::before{animation-play-state:running}
 .hero-meteor{
   position:absolute;top:var(--top);left:var(--left);
   width:clamp(95px,14vw,180px);height:2px;border-radius:999px;
-  background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(190,214,255,.7) 12%,transparent 100%);
-  box-shadow:-2px 0 8px rgba(205,225,255,.75);
+  background:linear-gradient(90deg,var(--gold),var(--highlight) 12%,transparent 100%);
+  box-shadow:-2px 0 8px var(--gold);
   opacity:0;transform:translate3d(85px,-65px,0) rotate(-32deg);
   animation:hero-meteor-fall 12s linear infinite;
   animation-delay:var(--delay);animation-play-state:paused;
