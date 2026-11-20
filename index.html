@@ -367,24 +367,24 @@ html[data-theme="light"] .about-cosmos .cosmos-glow{background:radial-gradient(c
 .site-attribution a{color:var(--gold);text-underline-offset:3px;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s}
 .site-attribution a:hover,.site-attribution a:focus-visible{text-decoration-color:currentColor}
 
-/* V12: a quiet, branded editorial loading scene in Zhejiang University's Qiushi blue. */
-.page-loader{position:fixed;inset:0;z-index:200;background:#003f88;color:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;transition:transform .83s cubic-bezier(.76,0,.20,1),visibility .83s}
+/* A quiet, white opening scene that slides away to reveal the home page. */
+.page-loader{position:fixed;inset:0;z-index:200;background:#fff;color:#16191d;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;transition:transform .83s cubic-bezier(.76,0,.20,1),visibility .83s}
 .page-loader.is-finished{transform:translateY(-105%);visibility:hidden;pointer-events:none}
-.page-loader::before{content:"";position:absolute;width:min(65vw,820px);height:min(65vw,820px);border:1px solid rgba(255,255,255,.1);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 64px rgba(255,255,255,.017),0 0 0 160px rgba(255,255,255,.014)}
-.page-loader::after{content:"";position:absolute;inset:-20%;background:linear-gradient(117deg,transparent 28%,rgba(255,255,255,.065) 43%,transparent 61%);transform:translateX(-100%);animation:loader-glint 1.6s ease-in-out both;pointer-events:none}
+.page-loader::before{content:"";position:absolute;width:min(65vw,820px);height:min(65vw,820px);border:1px solid #eceeef;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 64px rgba(18,24,30,.018),0 0 0 160px rgba(18,24,30,.012)}
+.page-loader::after{content:"";position:absolute;inset:-20%;background:linear-gradient(117deg,transparent 28%,rgba(18,24,30,.025) 43%,transparent 61%);transform:translateX(-100%);animation:loader-glint 1.6s ease-in-out both;pointer-events:none}
 .page-loader__corner{position:absolute;top:40px;left:clamp(26px,6vw,90px);font:11px Georgia,serif;letter-spacing:.25em;opacity:.68}
 .page-loader__corner--right{left:auto;right:clamp(26px,6vw,90px)}
 .page-loader__body{width:min(580px,calc(100% - 64px));text-align:center;position:relative;z-index:1}
 .page-loader__mark{height:76px;width:76px;display:block;margin:0 auto 26px;opacity:0;transform:translateY(8px);animation:loader-rise .5s .12s ease both}
-.page-loader__mark svg{height:100%;width:100%;overflow:visible;stroke:white;fill:none;stroke-width:1.05}
-.page-loader__mark .loader-core{fill:#fff;stroke:none}
+.page-loader__mark svg{height:100%;width:100%;overflow:visible;stroke:#30353a;fill:none;stroke-width:1.05}
+.page-loader__mark .loader-core{fill:#30353a;stroke:none}
 .page-loader__mark .loader-orbit-one{transform-origin:50% 50%;animation:loader-spin 6s linear infinite}
 .page-loader__mark .loader-orbit-two{transform-origin:50% 50%;animation:loader-spin-reverse 7s linear infinite}
 .page-loader__label{font:11px/1.8 Georgia,serif;letter-spacing:.32em;margin:0 0 14px;opacity:0;animation:loader-rise .55s .24s ease both}
-.page-loader__headline{font:500 clamp(29px,4.5vw,57px)/1.55 var(--serif);letter-spacing:.13em;margin:0 0 34px;text-shadow:0 4px 24px rgba(0,30,85,.16);opacity:0;animation:loader-rise .6s .38s ease both}
+.page-loader__headline{font:500 clamp(29px,4.5vw,57px)/1.55 var(--serif);letter-spacing:.13em;margin:0 0 34px;opacity:0;animation:loader-rise .6s .38s ease both}
 .page-loader__headline span{display:block}
-.page-loader__progress{height:1px;width:min(280px,70%);margin:0 auto;background:rgba(255,255,255,.28);overflow:hidden}
-.page-loader__progress span{display:block;width:0;height:100%;background:#fff;animation:loader-progress 1.4s .25s cubic-bezier(.24,.7,.36,1) forwards}
+.page-loader__progress{height:1px;width:min(280px,70%);margin:0 auto;background:#dfe2e5;overflow:hidden}
+.page-loader__progress span{display:block;width:0;height:100%;background:#30353a;animation:loader-progress 1.4s .25s cubic-bezier(.24,.7,.36,1) forwards}
 .page-loader__bottom{position:absolute;bottom:37px;left:clamp(26px,6vw,90px);right:clamp(26px,6vw,90px);display:flex;justify-content:space-between;gap:14px;font:10px Georgia,serif;letter-spacing:.2em;opacity:.73}
 @keyframes loader-spin{to{transform:rotate(360deg)}}
 @keyframes loader-spin-reverse{to{transform:rotate(-360deg)}}
@@ -676,15 +676,15 @@ html[data-theme="light"] .portrait-slot.portrait-hover .portrait-photo{
 #contact .contact-link > a.contact-value:focus-visible{color:var(--gold);text-decoration:underline;text-underline-offset:4px}
 @media(max-width:720px){#contact .contact-link > a.contact-value{font-size:12px}}
 
-/* V22: game-like sequential letter hop, maintaining the original Qiushi-blue loader. */
+/* Sequential letter hop on the loading button. */
 .page-loader__loading{
   display:inline-flex;align-items:baseline;justify-content:center;gap:.035em;
-  border:0;padding:0;margin:0;background:none;color:#fff;
+  border:0;padding:0;margin:0;background:none;color:inherit;
   font:600 12px/1.4 Georgia,serif;letter-spacing:.12em;
   cursor:pointer;white-space:nowrap;isolation:isolate;
   -webkit-tap-highlight-color:transparent;
 }
-.page-loader__loading:focus-visible{outline:1px solid rgba(255,255,255,.7);outline-offset:8px;border-radius:2px}
+.page-loader__loading:focus-visible{outline:1px solid currentColor;outline-offset:8px;border-radius:2px}
 .page-loader__loading .loading-letter{
   display:inline-block;transform-origin:center bottom;
   animation:loading-letter-hop 1.52s cubic-bezier(.27,.03,.17,1) infinite;
@@ -1150,7 +1150,7 @@ html[data-theme="dark"] .hero-meteor{animation-play-state:running}
  <div class="page-loader__body">
   <span class="page-loader__mark" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" opacity=".25"/><ellipse class="loader-orbit-one" cx="50" cy="50" rx="41" ry="16" transform="rotate(28 50 50)"/><ellipse class="loader-orbit-two" cx="50" cy="50" rx="38" ry="19" transform="rotate(-35 50 50)"/><circle class="loader-core" cx="50" cy="50" r="7"/><circle class="loader-core" cx="15" cy="34" r="2"/><circle class="loader-core" cx="79" cy="71" r="1.5"/></svg></span>
   <p class="page-loader__label">DionisApollo</p>
-  <p class="page-loader__headline">循知而行<span>向远而生</span></p>
+  <p class="page-loader__headline">我们在此相遇</p>
   <div class="page-loader__progress" aria-hidden="true"><span></span></div>
  </div>
  <div class="page-loader__bottom"><span>PROJECTS · ESSAYS · LIFE</span><button class="page-loader__loading" type="button" aria-label="LOADING" title="LOADING"><span class="loading-letter" style="--i:0" aria-hidden="true">L</span><span class="loading-letter" style="--i:1" aria-hidden="true">O</span><span class="loading-letter" style="--i:2" aria-hidden="true">A</span><span class="loading-letter" style="--i:3" aria-hidden="true">D</span><span class="loading-letter" style="--i:4" aria-hidden="true">I</span><span class="loading-letter" style="--i:5" aria-hidden="true">N</span><span class="loading-letter" style="--i:6" aria-hidden="true">G</span></button></div>
